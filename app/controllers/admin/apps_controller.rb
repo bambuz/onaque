@@ -40,7 +40,7 @@ class Admin::AppsController < ApplicationController
   private
 
   def app_params
-  	params[:app].permit(:thumbnail, :name, :link, :category)
+  	params[:app].permit(:thumbnail, :name, :link)
   end
 
 end

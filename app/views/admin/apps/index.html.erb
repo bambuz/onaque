@@ -1,4 +1,4 @@
-<h1>Admin - Apps</h1>
+<h1>Onaque - Admin - Apps</h1>
 
 <p><%= link_to "Add new app", new_admin_app_path, class: "btn btn-primary" %></p>
 
@@ -7,7 +7,6 @@
 		<tr>
 			<td><%= image_tag app.thumbnail %> <%= app.name %></td>
 			<td><%= link_to "Link", app.link %></td>
-			<td><%= app.category %></td>
 			<td><%= link_to "Edit", edit_admin_app_path(app) %> | <%= link_to "Delete", admin_app_path(app), method: "delete" %></td>
 		</tr>
 	<% end %>
