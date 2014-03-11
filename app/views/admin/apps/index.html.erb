@@ -1,2 +1,14 @@
-<h1>Admin::Apps#index</h1>
-<p>Find me in app/views/admin/apps/index.html.erb</p>
+<h1>Admin - Apps</h1>
+
+<p><%= link_to "Add new app", new_admin_app_path, class: "btn btn-primary" %></p>
+
+<table class="table">
+	<% @apps.each do |app| %>
+		<tr>
+			<td><%= image_tag app.thumbnail %> <%= app.name %></td>
+			<td><%= link_to "Link", app.link %></td>
+			<td><%= app.category %></td>
+			<td><%= link_to "Edit", edit_admin_app_path(app) %> | <%= link_to "Delete", admin_app_path(app), method: "delete" %></td>
+		</tr>
+	<% end %>
+</table>

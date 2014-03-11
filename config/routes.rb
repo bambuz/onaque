@@ -1,7 +1,14 @@
 Onaque::Application.routes.draw do
-  get "apps/new"
-  get "apps/edit"
-  get "apps/index"
+  
+  resources :apps
+
+  root to: "apps#index"
+
+  namespace :admin do
+    resources :apps
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

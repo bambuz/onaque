@@ -1,2 +1,12 @@
-<h1>Apps#index</h1>
-<p>Find me in app/views/apps/index.html.erb</p>
+<h1>Onaque</h1>
+
+
+<table class="table">
+	<% @apps.each do |app| %>
+		<tr>
+			<td><%= image_tag app.thumbnail %> <%= app.name %></td>
+			<td><%= link_to "Link", app.link %></td>
+			<td><%= app.category %></td>
+		</tr>
+	<% end %>
+</table>
