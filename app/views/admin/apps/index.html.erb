@@ -1,6 +1,6 @@
-<h1>Onaque - Admin - Apps</h1>
+<h1>Onaque - Admin - <%= @category.name %> - Apps</h1>
 
-<p><%= link_to "Add new app", new_admin_app_path, class: "btn btn-primary" %></p>
+<p><%= link_to "Add new app", new_admin_category_app_path, class: "btn btn-primary" %> <%= link_to "Back to categories", admin_categories_path, class: "btn btn-danger" %></p>
 
 <table class="table">
 	<% @apps.each do |app| %>

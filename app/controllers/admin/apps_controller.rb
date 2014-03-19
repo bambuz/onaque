@@ -1,17 +1,19 @@
 class Admin::AppsController < ApplicationController
 
+  before_filter :set_category, only: [:index, :new, :create]
+
   def index
-  	@apps = App.all
+    @apps = @category.apps
   end
 
   def new
-  	@app = App.new
+  	@app = @category.apps.build
   end
 
   def create
-  	@app = App.new app_params
+  	@app = @category.apps.build params_apps
   	if @app.save
-			redirect_to admin_apps_url
+			redirect_to admin_category_apps_url
 		else
 			render "new"
 		end
@@ -23,23 +25,28 @@ class Admin::AppsController < ApplicationController
 
   def update
   	@app = App.find params[:id]
-  	if @app.update app_params
-  		redirect_to admin_apps_url
+  	if @app.update params_apps
+  		redirect_to admin_category_apps_url(@app.category_id)
   	else
   		render "edit"
   	end
+
   end
 
   def destroy
   	@app = App.find params[:id]
   	@app.destroy
 
-  	redirect_to admin_apps_url
+  	redirect_to admin_category_apps_url(@app.category_id, @app)
   end
 
   private
 
-  def app_params
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
+
+  def params_apps
   	params[:app].permit(:thumbnail, :name, :link)
   end
 

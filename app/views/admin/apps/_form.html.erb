@@ -1,5 +1,5 @@
 <div class="col-md-4">
-	<%= form_for [:admin, @app] do |f| %>
+	<%= form_for [:admin, @category, @app] do |f| %>
 
 		<div class="form-group">
 			<%= f.label :thumbnail %>
@@ -18,7 +18,7 @@
 
 		<div class="form-group">
 			<%= f.submit "Submit", class: "btn btn-success" %>
-			<%= link_to "Cancel", admin_apps_url, class: "btn btn-danger" %>
+			<%= link_to "Cancel", admin_category_apps_path(@app.category_id), class: "btn btn-danger" %>
 		</div>
 
 	<% end %>
