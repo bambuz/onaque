@@ -1,8 +1,5 @@
 Onaque::Application.routes.draw do
   
-  get "operatingsystems/index"
-  get "operatingsystems/new"
-  get "operatingsystems/edit"
   resources :categories do
     resources :apps, shallow: true
   end
@@ -11,7 +8,7 @@ Onaque::Application.routes.draw do
 
 
   namespace :admin do
-    resources :operatingsystem
+    resources :operatingsystems
     resources :categories do
       resources :apps, shallow: true
     end

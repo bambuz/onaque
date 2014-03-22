@@ -1,6 +1,7 @@
 class Admin::AppsController < ApplicationController
 
   before_filter :set_category, only: [:index, :new, :create]
+  before_filter :operatingsystems, only: [:new, :create, :edit, :update, :index]
 
   def index
     @apps = @category.apps
@@ -46,8 +47,12 @@ class Admin::AppsController < ApplicationController
     @category = Category.find(params[:category_id])
   end
 
+  def operatingsystems
+    @operatingsystems = Operatingsystem.all
+  end
+
   def params_apps
-  	params[:app].permit(:thumbnail, :name, :link)
+  	params[:app].permit(:thumbnail, :name, :link, :operatingsystem_id)
   end
 
 end

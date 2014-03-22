@@ -3,10 +3,19 @@
 <p><%= link_to "Add new app", new_admin_category_app_path, class: "btn btn-primary" %> <%= link_to "Back to categories", admin_categories_path, class: "btn btn-danger" %></p>
 
 <table class="table">
+	<tr>
+		<th>App name</th>
+		<th>Operating system</th>
+		<th>Functions management</th>
+		<th>Link to app download</th>
+		<th>Edit options</th>
+	</tr>
 	<% @apps.each do |app| %>
 		<tr>
 			<td><%= image_tag app.thumbnail %> <%= app.name %></td>
-			<td><%= link_to "Link", app.link %></td>
+			<td><%= @operatingsystems.find(app.operatingsystem_id).name %></td>
+			<td><%= link_to "functions", "#", class: "btn btn-success" %></td>
+			<td><%= link_to "Link", app.link, target: '_blank' %></td>
 			<td><%= link_to "Edit", edit_admin_app_path(app) %> | <%= link_to "Delete", admin_app_path(app), method: "delete" %></td>
 		</tr>
 	<% end %>

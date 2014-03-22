@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319135935) do
+ActiveRecord::Schema.define(version: 20140319141552) do
 
   create_table "apps", force: true do |t|
     t.string   "name"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140319135935) do
   add_index "functions", ["app_id"], name: "index_functions_on_app_id"
   add_index "functions", ["category_id"], name: "index_functions_on_category_id"
 
-  create_table "operatingsystem", force: true do |t|
+  create_table "operatingsystems", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

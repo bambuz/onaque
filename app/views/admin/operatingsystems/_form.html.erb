@@ -1,0 +1,15 @@
+<div class="col-md-4">
+	<%= form_for [:admin, @operatingsystem] do |f| %>
+
+		<div class="form-group">
+			<%= f.label :name %>
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.submit "Submit", class: "btn btn-success" %>
+			<%= link_to "Cancel", admin_operatingsystems_url, class: "btn btn-danger" %>
+		</div>
+
+	<% end %>
+</div>
