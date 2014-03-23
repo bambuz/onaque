@@ -1,0 +1,12 @@
+<h1>Onaque - Admin - <%= @category.name %> - Functions</h1>
+
+<p><%= link_to "Add new function", new_admin_category_function_path, class: "btn btn-primary" %> <%= link_to "Back to apps in category", admin_category_apps_path, class: "btn btn-danger" %></p>
+
+<table class="table">
+	<% @functions.each do |function| %>
+		<tr>
+			<td><%= function.name %></td>
+			<td><%= link_to "Edit", edit_admin_function_path(function), class: "btn btn-success" %> <%= link_to "Delete", admin_function_path(function), method: "delete", class: "btn btn-danger" %></td>
+		</tr>
+	<% end %>
+</table>

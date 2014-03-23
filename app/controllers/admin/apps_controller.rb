@@ -38,7 +38,7 @@ class Admin::AppsController < ApplicationController
   	@app = App.find params[:id]
   	@app.destroy
 
-  	redirect_to admin_category_apps_url(@app.category_id, @app)
+  	redirect_to admin_category_apps_url(@app.category_id)
   end
 
   private

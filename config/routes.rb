@@ -11,6 +11,7 @@ Onaque::Application.routes.draw do
     resources :operatingsystems
     resources :categories do
       resources :apps, shallow: true
+      resources :functions, shallow: true
     end
   end
 

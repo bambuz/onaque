@@ -36,7 +36,10 @@ ActiveRecord::Schema.define(version: 20140323040151) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
+
+  add_index "functions", ["category_id"], name: "index_functions_on_category_id"
 
   create_table "operatingsystems", force: true do |t|
     t.string   "name"
