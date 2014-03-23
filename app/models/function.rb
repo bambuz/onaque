@@ -1,3 +1,4 @@
 class Function < ActiveRecord::Base
-	has_and_belongs_to_many :apps
+	has_many :values
+	has_many :apps, through: :values
 end

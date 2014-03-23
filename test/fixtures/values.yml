@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  app_id: 1
+  function_id: 1
+  valueboolean: false
+  valuenumber: 1.5
+  valuestring: MyString
+
+two:
+  app_id: 1
+  function_id: 1
+  valueboolean: false
+  valuenumber: 1.5
+  valuestring: MyString
