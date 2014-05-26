@@ -21,10 +21,32 @@
 			<%= f.select :operatingsystem_id, options_for_select([ [@operatingsystems.find(1).name, @operatingsystems.find(1).id], [@operatingsystems.find(2).name, @operatingsystems.find(2).id], [@operatingsystems.find(3).name, @operatingsystems.find(3).id]  ]), class: "form-control" %>
 		</div>
 
+
+		<table class="table">
+			<tr>
+				<th>Function</th>
+				<th>Value number</th>
+				<th>Value string</th>
+			</tr>				<%= f.fields_for :values do |builder| %>
+					<tr>
+						<td><%= builder.object.function.name %></td>
+						<td><%= builder.text_field :valuenumber, class: "form-control"  %></td>
+						<td><%= builder.text_field :valuestring, class: "form-control"  %></td>
+						<%= builder.hidden_field :function_id %>
+					<tr>
+				<% end %>
+
+		</table>
+
+
+
 		<div class="form-group">
 			<%= f.submit "Submit", class: "btn btn-success" %>
 			<%= link_to "Cancel", admin_category_apps_path(@app.category_id), class: "btn btn-danger" %>
 		</div>
 
 	<% end %>
+
+
+
 </div>

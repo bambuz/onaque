@@ -1,7 +1,7 @@
 class Admin::AppsController < ApplicationController
 
-  before_filter :set_category, only: [:index, :new, :create]
-  before_filter :operatingsystems, only: [:new, :create, :edit, :update, :index]
+  before_action :set_category, only: [:index, :new, :create]
+  before_action :operatingsystems, only: [:new, :create, :edit, :update, :index]
 
   def index
     @apps = @category.apps
@@ -9,15 +9,19 @@ class Admin::AppsController < ApplicationController
 
   def new
   	@app = @category.apps.build
+    @functions = Function.where(category_id: @category.id)
+    @functions.each do |function|
+      value = function.values.build
+      @app.values << value
+    end
   end
 
   def create
-  	@app = @category.apps.build params_apps
-  	if @app.save
-			redirect_to admin_category_apps_url
-		else
-			render "new"
-		end
+    @app = App.new params_apps
+    @app.category = @category
+    @app.save
+
+    redirect_to admin_category_apps_url
   end
 
   def edit
@@ -52,7 +56,7 @@ class Admin::AppsController < ApplicationController
   end
 
   def params_apps
-  	params[:app].permit(:thumbnail, :name, :link, :operatingsystem_id)
+  	params[:app].permit(:thumbnail, :name, :link, :operatingsystem_id, values_attributes: [:valuenumber, :valuestring, :app_id, :function_id])
   end
 
 end
